@@ -1,0 +1,10 @@
+{% load static %}
+<div class="row question">
+    <div class="col-2">
+        <img class="avatar-question" src="{% static "img/duck.png" %}" alt="">
+    </div>
+    <div class="col-10">
+        <h3><a href="{% url 'question' question.number %}">{{ question.title }}</a></h3>
+        <p>{{ question.text }}</p>
+    </div>
+</div>
