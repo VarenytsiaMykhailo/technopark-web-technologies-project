@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ block.super }}. Пользователь {{ user.username }}{% endblock %}
+{% load static %}
+{% block content %}
+<div class="col-md-8">
+  <h3 class="my-3">Пользователь <b>{{ user.username }}</b></h3>
+  <img alt="avatar" class="avatar" src="{{ user.get_avatar_url }}">
+  <p class="m-1">Вопросов: <b>{{ user.questions_count }}</b></p>
+  <p class="m-1">Ответов: <b>{{ user.answers_count }}</b></p>
+</div>
+{% endblock %}

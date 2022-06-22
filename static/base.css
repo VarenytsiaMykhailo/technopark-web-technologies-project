@@ -1,0 +1,38 @@
+body {
+	padding-top: 56px;
+	padding-bottom: 150px;
+}
+hr {
+	margin: 10px 0 10px 0;
+}
+.navbar-brand {
+	cursor: default;
+}
+img.avatar32 {
+	height: 32px;
+	width: 32px;
+}
+img.avatar64 {
+	height: 64px;
+	width: 64px;
+}
+img.avatar {
+	max-height: 256px;
+	max-width: 256px;
+	min-height: 128px;
+	min-width: 128px;
+}
+.fa {
+	cursor: pointer;
+	float: right;
+	font-size: 48px;
+	user-select: none;
+}
+.fa:hover {
+	color: lightgray;
+}
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
