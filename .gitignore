@@ -131,4 +131,10 @@ dmypy.json
 # Idea
 /.idea
 
-!app/migrations/
+/uploads
+
+# Only for Development only
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+

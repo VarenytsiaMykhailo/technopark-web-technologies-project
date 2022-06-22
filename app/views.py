@@ -162,7 +162,7 @@ class AskQuestionView(BaseView):
         form = AskQuestionForm(data=request.POST, instance=Question(author=request.user))
         if form.is_valid():
             question = form.save()
-            return redirect('app:question', question_id=question.id)
+            return redirect('app:question', question.id)
         kwargs['form'] = form
         return super().get(request, **kwargs)
 
