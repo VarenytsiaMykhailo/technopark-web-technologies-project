@@ -9,12 +9,12 @@ from django.views import View
 from django.views.generic import RedirectView
 
 from app.forms import (AnswerTheQuestionForm, AskQuestionForm,
-                         CommentToAnswerForm, CommentToQuestionForm,
-                         EditPasswordForm, EditProfileForm, LoginForm,
-                         QuestionRatingForm, QuestionsPaginationForm,
-                         SignupForm, UsersPaginationForm)
+                       CommentToAnswerForm, CommentToQuestionForm,
+                       EditPasswordForm, EditProfileForm, LoginForm,
+                       QuestionRatingForm, QuestionsPaginationForm,
+                       SignupForm, UsersPaginationForm)
 from app.models import (Answer, CommentToAnswer, CommentToQuestion, Question,
-                          QuestionLike, QuestionTag, User)
+                        QuestionLike, QuestionTag, User)
 
 # Create your views here.
 
@@ -25,6 +25,10 @@ QUESTIONS = [
         "number": i
     } for i in range(10)
 ]
+
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 
 class BaseView(View):
@@ -193,7 +197,7 @@ class QuestionView(PaginationView):
 
     def post(self, request, **kwargs):
         id_ = kwargs['id']
-        if request.is_ajax():
+        if is_ajax(request):
             return ajax_question(request, **kwargs)
         if not request.user.is_authenticated:
             response = redirect('app:login')
@@ -314,4 +318,3 @@ def ajax_question(request, **kwargs):
 #
 # def question(request, i: int):
 #     return render(request, "question_page.html", {"question": QUESTIONS[i]})
-
