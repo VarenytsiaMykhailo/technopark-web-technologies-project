@@ -2,28 +2,28 @@
 {% load static %}
 {% block title %}{{ block.super }}. Профиль{% endblock %}
 {% block content %}
-<div class="col-md-8">
-  <h3 class="my-3">Пользователь <b>{{ request.user }}</b></h3>
-  <img alt="avatar" class="avatar" src="{{ request.user.get_avatar_url }}">
-  <form class="form-horizontal" enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {{ edit_profile_form.as_p }}
-    <div class="form-actions">
-      <button class="btn btn-primary" type="submit">Сохранить</button>
+    <div class="col-md-8">
+        <h3 class="my-3">Пользователь <b>{{ request.user }}</b></h3>
+        <img alt="avatar" class="avatar" src="{{ request.user.get_avatar_url }}">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{ edit_profile_form.as_p }}
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+        <hr>
+        <p class="mb-0" style="text-align: center">Изменить пароль</p>
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            {{ edit_password_form.as_p }}
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Изменить пароль</button>
+            </div>
+        </form>
+        <hr>
+        <p style="text-align: center">
+            <a class="btn btn-primary" href="{% url 'app:logout' %}">Выйти из аккаунта</a>
+        </p>
     </div>
-  </form>
-  <hr>
-  <p class="mb-0" style="text-align: center">Изменить пароль</p>
-  <form class="form-horizontal" method="post">
-    {% csrf_token %}
-    {{ edit_password_form.as_p }}
-    <div class="form-actions">
-      <button class="btn btn-primary" type="submit">Изменить пароль</button>
-    </div>
-  </form>
-  <hr>
-  <p style="text-align: center">
-    <a class="btn btn-primary" href="{% url 'app:logout' %}">Выйти из аккаунта</a>
-  </p>
-</div>
 {% endblock %}
