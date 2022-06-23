@@ -9,16 +9,16 @@
         <form class="form-horizontal" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             {{ edit_profile_form.as_p }}
-            <div class="form-actions">
+            <div class="form-actions text-center">
                 <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </form>
         <hr>
-        <p class="mb-0" style="text-align: center">Изменить пароль</p>
+        <h4>Изменить пароль</h4>
         <form class="form-horizontal" method="post">
             {% csrf_token %}
             {{ edit_password_form.as_p }}
-            <div class="form-actions">
+            <div class="form-actions text-center">
                 <button class="btn btn-primary" type="submit">Изменить пароль</button>
             </div>
         </form>
