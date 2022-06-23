@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load django_bootstrap5 %}
 {% block title %}{{ block.super }}. Регистрация{% endblock %}
 {% block content %}
     <div class="col-md-8">
         <h1 class="my-3">Регистрация</h1>
         <form class="form-horizontal" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {% bootstrap_form form %}
             <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
             </div>

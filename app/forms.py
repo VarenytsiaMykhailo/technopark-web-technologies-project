@@ -3,15 +3,28 @@ from django.contrib.auth.forms import (AuthenticationForm, PasswordChangeForm,
                                        UserCreationForm)
 
 from app.models import (Answer, AnswerLike, CommentToAnswer,
-                          CommentToQuestion, Question, QuestionLike, User)
+                        CommentToQuestion, Question, QuestionLike, User)
 
 
 class SignupForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs = self.fields['first_name'].widget.attrs = \
-            self.fields['last_name'].widget.attrs = self.fields['username'].widget.attrs = \
-            self.fields['password1'].widget.attrs = self.fields['password2'].widget.attrs = {
+        self.fields['email'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['first_name'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['last_name'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['username'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['password1'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['password2'].widget.attrs = {
             'class': 'form-control'
         }
         self.fields['avatar'].widget.attrs = {
@@ -34,7 +47,11 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = 'Логин'
-        self.fields['username'].widget.attrs = self.fields['password'].widget.attrs = {
+        self.fields['password'].label = 'Пароль'
+        self.fields['username'].widget.attrs = {
+            'class': 'form-control'
+        }
+        self.fields['password'].widget.attrs = {
             'class': 'form-control'
         }
 
